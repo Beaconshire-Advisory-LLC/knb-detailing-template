@@ -65,6 +65,7 @@ export interface Database {
           email: string;
         };
         Update: Partial<Database["public"]["Tables"]["profiles"]["Row"]>;
+        Relationships: [];
       };
       vehicles: {
         Row: {
@@ -86,6 +87,7 @@ export interface Database {
           "id" | "created_at"
         > & { id?: string; created_at?: string };
         Update: Partial<Database["public"]["Tables"]["vehicles"]["Row"]>;
+        Relationships: [];
       };
       services: {
         Row: {
@@ -106,6 +108,7 @@ export interface Database {
           category: ServiceCategory;
         };
         Update: Partial<Database["public"]["Tables"]["services"]["Row"]>;
+        Relationships: [];
       };
       service_prices: {
         Row: {
@@ -119,6 +122,7 @@ export interface Database {
           "id"
         > & { id?: string };
         Update: Partial<Database["public"]["Tables"]["service_prices"]["Row"]>;
+        Relationships: [];
       };
       packages: {
         Row: {
@@ -148,6 +152,7 @@ export interface Database {
           base_price_cents: number;
         };
         Update: Partial<Database["public"]["Tables"]["packages"]["Row"]>;
+        Relationships: [];
       };
       package_services: {
         Row: { package_id: string; service_id: string };
@@ -155,6 +160,7 @@ export interface Database {
         Update: Partial<
           Database["public"]["Tables"]["package_services"]["Row"]
         >;
+        Relationships: [];
       };
       service_zips: {
         Row: {
@@ -166,6 +172,7 @@ export interface Database {
         };
         Insert: Database["public"]["Tables"]["service_zips"]["Row"];
         Update: Partial<Database["public"]["Tables"]["service_zips"]["Row"]>;
+        Relationships: [];
       };
       appointments: {
         Row: {
@@ -208,6 +215,7 @@ export interface Database {
           deposit_cents: number;
         };
         Update: Partial<Database["public"]["Tables"]["appointments"]["Row"]>;
+        Relationships: [];
       };
       appointment_services: {
         Row: {
@@ -219,6 +227,7 @@ export interface Database {
         Update: Partial<
           Database["public"]["Tables"]["appointment_services"]["Row"]
         >;
+        Relationships: [];
       };
       service_photos: {
         Row: {
@@ -237,6 +246,7 @@ export interface Database {
           "id" | "created_at"
         > & { id?: string; created_at?: string };
         Update: Partial<Database["public"]["Tables"]["service_photos"]["Row"]>;
+        Relationships: [];
       };
       memberships: {
         Row: {
@@ -262,6 +272,7 @@ export interface Database {
           package_id: string;
         };
         Update: Partial<Database["public"]["Tables"]["memberships"]["Row"]>;
+        Relationships: [];
       };
       gift_cards: {
         Row: {
@@ -284,6 +295,7 @@ export interface Database {
           remaining_amount_cents: number;
         };
         Update: Partial<Database["public"]["Tables"]["gift_cards"]["Row"]>;
+        Relationships: [];
       };
       reviews: {
         Row: {
@@ -304,6 +316,7 @@ export interface Database {
           body: string;
         };
         Update: Partial<Database["public"]["Tables"]["reviews"]["Row"]>;
+        Relationships: [];
       };
       coupons: {
         Row: {
@@ -324,6 +337,7 @@ export interface Database {
           discount_value: number;
         };
         Update: Partial<Database["public"]["Tables"]["coupons"]["Row"]>;
+        Relationships: [];
       };
       contact_submissions: {
         Row: {
@@ -351,6 +365,7 @@ export interface Database {
         Update: Partial<
           Database["public"]["Tables"]["contact_submissions"]["Row"]
         >;
+        Relationships: [];
       };
       stripe_events: {
         Row: {
@@ -361,6 +376,7 @@ export interface Database {
         };
         Insert: Database["public"]["Tables"]["stripe_events"]["Row"];
         Update: Partial<Database["public"]["Tables"]["stripe_events"]["Row"]>;
+        Relationships: [];
       };
       audit_log: {
         Row: {
@@ -377,11 +393,14 @@ export interface Database {
           "id" | "created_at"
         > & { id?: number; created_at?: string };
         Update: Partial<Database["public"]["Tables"]["audit_log"]["Row"]>;
+        Relationships: [];
       };
     };
+    Views: Record<string, never>;
     Functions: {
       is_admin: { Args: Record<string, never>; Returns: boolean };
     };
     Enums: Record<string, never>;
+    CompositeTypes: Record<string, never>;
   };
 }
