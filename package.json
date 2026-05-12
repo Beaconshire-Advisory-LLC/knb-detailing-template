@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:types": "supabase gen types typescript --linked > src/types/db.ts",
+    "db:push": "supabase db push",
+    "db:reset": "supabase db reset"
   },
   "engines": {
     "node": ">=20.9.0",
