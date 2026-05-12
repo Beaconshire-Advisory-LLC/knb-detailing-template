@@ -82,10 +82,10 @@ export interface Database {
           primary_photo_url: string | null;
           created_at: string;
         };
-        Insert: Omit<
-          Database["public"]["Tables"]["vehicles"]["Row"],
-          "id" | "created_at"
-        > & { id?: string; created_at?: string };
+        Insert: Partial<Database["public"]["Tables"]["vehicles"]["Row"]> & {
+          owner_id: string;
+          kind: VehicleKind;
+        };
         Update: Partial<Database["public"]["Tables"]["vehicles"]["Row"]>;
         Relationships: [];
       };
