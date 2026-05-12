@@ -374,7 +374,10 @@ export interface Database {
           payload: Json;
           processed_at: string;
         };
-        Insert: Database["public"]["Tables"]["stripe_events"]["Row"];
+        Insert: Omit<
+          Database["public"]["Tables"]["stripe_events"]["Row"],
+          "processed_at"
+        > & { processed_at?: string };
         Update: Partial<Database["public"]["Tables"]["stripe_events"]["Row"]>;
         Relationships: [];
       };

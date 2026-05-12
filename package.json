@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "db:types": "supabase gen types typescript --linked > src/types/db.ts",
     "db:push": "supabase db push",
-    "db:reset": "supabase db reset"
+    "db:reset": "supabase db reset",
+    "stripe:setup": "tsx scripts/stripe-setup.ts"
   },
   "engines": {
     "node": ">=20.9.0",
@@ -54,9 +55,11 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
