@@ -3,12 +3,11 @@
  * Facebook page + the cyan-and-black brand logo, stored locally in
  * /public/photos/.
  *
- * Two slots still use Unsplash stand-ins because the owner hasn't provided
- * matching photos yet:
- *  - `servicesMotorcycle` (no real motorcycle photo on file)
+ * One slot still uses an Unsplash stand-in because the owner hasn't
+ * provided a matching photo yet:
  *  - `aboutOwners` (no real Krista & Benjamin headshot on file)
  *
- * Both are flagged in MISSING_DATA.md §3.
+ * Flagged in MISSING_DATA.md §3.
  */
 
 const local = (file: string) => `/photos/${file}`;
@@ -25,7 +24,7 @@ export const PHOTOS = {
   servicesAuto: local("genesis.jpg"),
   servicesBoat: local("boat.jpg"),
   servicesRv: local("rv-1.jpg"),
-  servicesMotorcycle: u("1558981806-ec527fa84c39", 1600), // Unsplash — no real motorcycle photo yet
+  servicesMotorcycle: local("motorcycle.jpg"),   // red Harley custom — KNB shop floor
   servicesCeramic: local("truck-2.jpg"),         // glossy black truck — shows ceramic finish
   servicesPaintCorrection: local("interior.jpg"), // close-up paint/surface work
 
@@ -42,15 +41,28 @@ export const PHOTOS = {
   awardBadge: local("award.jpg"),                // Best of BusinessRate 2025 plaque
 } as const;
 
-export const GALLERY_PHOTOS: { kind: "car" | "truck" | "suv" | "boat" | "rv" | "motorcycle"; title: string; url: string }[] = [
-  { kind: "boat",  title: "Lake Wawasee — dockside detail",        url: local("boat.jpg") },
-  { kind: "boat",  title: "Pontoon — full season package",         url: local("pontoon.jpg") },
-  { kind: "car",   title: "Hyundai Genesis — full detail + shine", url: local("genesis.jpg") },
-  { kind: "car",   title: "Interior — leather + carpet",           url: local("interior.jpg") },
-  { kind: "rv",    title: "Class C RV — exterior + roof",          url: local("rv-1.jpg") },
-  { kind: "rv",    title: "RV — pre-trip refresh",                 url: local("rv-2.jpg") },
-  { kind: "suv",   title: "SUV — full detail",                     url: local("suv-1.jpg") },
-  { kind: "suv",   title: "SUV — paint correction",                url: local("suv-2.jpg") },
-  { kind: "truck", title: "Truck — exterior + bed clean",          url: local("truck-1.jpg") },
-  { kind: "truck", title: "Truck — show prep + ceramic finish",    url: local("truck-2.jpg") },
+export type GalleryKind =
+  | "car"
+  | "truck"
+  | "suv"
+  | "boat"
+  | "rv"
+  | "motorcycle"
+  | "jetski"
+  | "commercial";
+
+export const GALLERY_PHOTOS: { kind: GalleryKind; title: string; url: string }[] = [
+  { kind: "boat",       title: "Lake Wawasee — dockside detail",         url: local("boat.jpg") },
+  { kind: "boat",       title: "Pontoon — full season package",          url: local("pontoon.jpg") },
+  { kind: "jetski",     title: "Sea-Doo — pre-season detail",            url: local("jet-ski.jpg") },
+  { kind: "car",        title: "Hyundai Genesis — full detail + shine",  url: local("genesis.jpg") },
+  { kind: "car",        title: "Interior — leather + carpet",            url: local("interior.jpg") },
+  { kind: "motorcycle", title: "Harley-Davidson Softail — show prep",    url: local("motorcycle.jpg") },
+  { kind: "rv",         title: "Class C RV — exterior + roof",           url: local("rv-1.jpg") },
+  { kind: "rv",         title: "RV — pre-trip refresh",                  url: local("rv-2.jpg") },
+  { kind: "suv",        title: "SUV — full detail",                      url: local("suv-1.jpg") },
+  { kind: "suv",        title: "SUV — paint correction",                 url: local("suv-2.jpg") },
+  { kind: "truck",      title: "Truck — exterior + bed clean",           url: local("truck-1.jpg") },
+  { kind: "truck",      title: "Truck — show prep + ceramic finish",     url: local("truck-2.jpg") },
+  { kind: "commercial", title: "International semi — fleet detail",      url: local("semi.jpg") },
 ];

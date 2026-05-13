@@ -1,30 +1,44 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 
+type Kind =
+  | "car"
+  | "truck"
+  | "suv"
+  | "boat"
+  | "rv"
+  | "motorcycle"
+  | "jetski"
+  | "commercial";
+
 type Props = {
   title: string;
-  kind: "car" | "truck" | "suv" | "boat" | "rv" | "motorcycle";
+  kind: Kind;
   /** Real image URL (Unsplash stand-in or Supabase Storage). */
   imageUrl?: string | null;
   badge?: ReactNode;
 };
 
-const KIND_GRADIENT: Record<Props["kind"], string> = {
+const KIND_GRADIENT: Record<Kind, string> = {
   car: "from-brand-wawasee via-brand-teal to-brand-graphite",
   truck: "from-brand-graphite via-brand-wawasee to-brand-teal",
   suv: "from-brand-teal via-brand-wawasee to-brand-graphite",
   boat: "from-brand-teal via-brand-wawasee to-sky-300",
   rv: "from-brand-wawasee via-brand-graphite to-brand-chrome",
   motorcycle: "from-brand-graphite via-brand-graphite to-brand-teal",
+  jetski: "from-brand-cyan via-brand-teal to-brand-wawasee",
+  commercial: "from-brand-graphite via-brand-graphite to-brand-chrome",
 };
 
-const KIND_LABEL: Record<Props["kind"], string> = {
+const KIND_LABEL: Record<Kind, string> = {
   car: "Auto",
   truck: "Truck",
   suv: "SUV",
   boat: "Boat",
   rv: "RV",
   motorcycle: "Motorcycle",
+  jetski: "Jet ski",
+  commercial: "Commercial",
 };
 
 export function BeforeAfterCard({ title, kind, imageUrl, badge }: Props) {
