@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   ShieldCheck,
@@ -22,10 +23,12 @@ import {
 } from "@/components/ui/accordion";
 import { ReviewsCarousel } from "@/components/marketing/reviews-carousel";
 import { BeforeAfterCard } from "@/components/marketing/before-after";
+import { PhotoBackdrop } from "@/components/marketing/photo-backdrop";
+import { WaveDivider } from "@/components/marketing/wave-divider";
 import { BUSINESS, SERVICE_AREA } from "@/lib/constants";
+import { PHOTOS, GALLERY_PHOTOS } from "@/lib/images";
 import {
   PLACEHOLDER_REVIEWS,
-  PLACEHOLDER_GALLERY,
   HOME_FAQS,
 } from "@/lib/placeholders";
 import { pageMetadata, faqJsonLd } from "@/lib/seo";
@@ -76,19 +79,26 @@ export default function HomePage() {
       />
 
       {/* 1 · Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-secondary via-background to-background">
-        <div className="mx-auto max-w-7xl px-4 pt-16 pb-20 sm:px-6 sm:pt-20 sm:pb-28 lg:px-8">
+      <PhotoBackdrop
+        src={PHOTOS.homeHero}
+        alt="Mobile detailing at Lake Wawasee"
+        priority
+        overlayFrom="from-brand-graphite/85"
+        overlayTo="to-brand-wawasee/80"
+        className="text-white"
+      >
+        <div className="mx-auto max-w-7xl px-4 pt-20 pb-24 sm:px-6 sm:pt-28 sm:pb-32 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <Badge
               variant="secondary"
-              className="mb-6 border-border bg-background/80 px-3 py-1 text-xs font-medium uppercase tracking-wider text-muted-foreground"
+              className="mb-6 border-white/30 bg-white/15 px-3 py-1 text-xs font-medium uppercase tracking-wider text-white backdrop-blur"
             >
               Mobile detailing · Syracuse, IN
             </Badge>
-            <h1 className="text-balance text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
+            <h1 className="text-balance text-4xl font-extrabold tracking-tight text-white drop-shadow-md sm:text-5xl md:text-6xl">
               {BUSINESS.tagline}
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground sm:text-xl">
+            <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-white/90 sm:text-xl">
               We come to your driveway, dock, or lift to detail your car, boat,
               RV, or motorcycle. Licensed and insured. Locally owned by Krista
               &amp; Benjamin Hohman.
@@ -96,7 +106,8 @@ export default function HomePage() {
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button
                 size="lg"
-                className="h-12 w-full px-8 text-base font-semibold sm:w-auto"
+                variant="secondary"
+                className="h-12 w-full bg-white px-8 text-base font-semibold text-brand-wawasee hover:bg-white/90 sm:w-auto"
                 render={<Link href="/book" />}
               >
                 Book now
@@ -104,7 +115,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="h-12 w-full px-8 text-base font-semibold sm:w-auto"
+                className="h-12 w-full border-white/40 bg-white/10 px-8 text-base font-semibold text-white backdrop-blur hover:bg-white/20 hover:text-white sm:w-auto"
                 render={<Link href="/quote" />}
               >
                 Get an instant quote
@@ -112,30 +123,34 @@ export default function HomePage() {
             </div>
             <a
               href={`tel:${BUSINESS.phoneE164}`}
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground tabular-nums"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white tabular-nums"
             >
               <Phone className="size-4" aria-hidden />
               or call {BUSINESS.phone}
             </a>
           </div>
-          <ul className="mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-4 text-sm text-muted-foreground sm:grid-cols-3">
+          <ul className="mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-4 text-sm text-white/85 sm:grid-cols-3">
             <li className="flex items-center justify-center gap-2">
-              <ShieldCheck className="size-4 text-primary" aria-hidden />
+              <ShieldCheck className="size-4 text-white" aria-hidden />
               Licensed &amp; insured
             </li>
             <li className="flex items-center justify-center gap-2">
-              <MapPin className="size-4 text-primary" aria-hidden />
+              <MapPin className="size-4 text-white" aria-hidden />
               {SERVICE_AREA.primary.join(" · ")}
             </li>
             <li className="flex items-center justify-center gap-2">
-              <span aria-hidden className="text-primary">
+              <span aria-hidden className="text-white">
                 ★
               </span>
               Syracuse-Wawasee Chamber member
             </li>
           </ul>
         </div>
-      </section>
+        <WaveDivider
+          fill="var(--background)"
+          className="absolute -bottom-px left-0 right-0 h-12 w-full"
+        />
+      </PhotoBackdrop>
 
       {/* 2 · We come to you */}
       <section
@@ -163,6 +178,7 @@ export default function HomePage() {
                 blurb:
                   "Sedans, trucks, SUVs. Driveway or covered garage. Express to ceramic.",
                 href: "/services/auto",
+                photo: PHOTOS.weComeAuto,
               },
               {
                 icon: Ship,
@@ -170,6 +186,7 @@ export default function HomePage() {
                 blurb:
                   "Dockside on Lake Wawasee. On-lift or on-trailer. Gel-coat specialty.",
                 href: "/services/boat",
+                photo: PHOTOS.weComeBoat,
               },
               {
                 icon: Bike,
@@ -177,21 +194,37 @@ export default function HomePage() {
                 blurb:
                   "Class C and Class A details, Harley and sportbike show prep.",
                 href: "/services/rv",
+                photo: PHOTOS.weComeRvMoto,
               },
-            ].map(({ icon: Icon, title, blurb, href }) => (
+            ].map(({ icon: Icon, title, blurb, href, photo }) => (
               <Link
                 key={title}
                 href={href}
-                className="group flex flex-col gap-3 rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/40 hover:shadow-md"
+                className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-primary/40 hover:shadow-md"
               >
-                <Icon className="size-8 text-primary" aria-hidden />
-                <h3 className="text-lg font-semibold text-foreground">
-                  {title}
-                </h3>
-                <p className="text-sm text-muted-foreground">{blurb}</p>
-                <span className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
-                  See services <ArrowRight className="size-4" aria-hidden />
-                </span>
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                  <Image
+                    src={photo}
+                    alt={`${title} detailing`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-graphite/40 to-transparent" />
+                  <Icon
+                    className="absolute right-4 top-4 size-7 text-white drop-shadow-md"
+                    aria-hidden
+                  />
+                </div>
+                <div className="flex flex-1 flex-col gap-3 p-6">
+                  <h3 className="text-lg font-semibold text-foreground">
+                    {title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">{blurb}</p>
+                  <span className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
+                    See services <ArrowRight className="size-4" aria-hidden />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>
@@ -274,11 +307,12 @@ export default function HomePage() {
             Real before/after photos arrive after our first few jobs of the season.
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {PLACEHOLDER_GALLERY.map((item) => (
+            {GALLERY_PHOTOS.slice(0, 4).map((item) => (
               <BeforeAfterCard
                 key={item.title}
                 title={item.title}
                 kind={item.kind}
+                imageUrl={item.url}
               />
             ))}
           </div>
@@ -347,10 +381,10 @@ export default function HomePage() {
       {/* 6 · Membership teaser */}
       <section
         aria-labelledby="membership-heading"
-        className="border-t border-border bg-primary/5"
+        className="relative isolate overflow-hidden border-t border-border bg-primary/5"
       >
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
             <div>
               <Badge className="bg-primary/10 text-primary hover:bg-primary/15">
                 Lake Life Membership
@@ -367,6 +401,25 @@ export default function HomePage() {
                 à la carte. Pause anytime. Captain&apos;s Club for boats covers
                 spring de-winterize through fall winterize.
               </p>
+              <ul className="mt-6 grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
+                {[
+                  "Priority scheduling",
+                  "10% off any add-on",
+                  "Free travel to Tier-2 ZIPs",
+                  "Annual ceramic refresh (premium)",
+                ].map((line) => (
+                  <li
+                    key={line}
+                    className="flex items-start gap-2 rounded-md bg-background p-3 ring-1 ring-border"
+                  >
+                    <CheckCircle2
+                      className="mt-0.5 size-4 shrink-0 text-primary"
+                      aria-hidden
+                    />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <Button render={<Link href="/membership" />}>
                   See membership tiers
@@ -376,25 +429,25 @@ export default function HomePage() {
                 </Button>
               </div>
             </div>
-            <ul className="space-y-3 text-sm">
-              {[
-                "Priority scheduling — book a week before public openings",
-                "10% off any add-on (headlight, pet-hair, ozone)",
-                "Free travel to Tier-2 ZIPs",
-                "Annual ceramic refresh for premium tier",
-              ].map((line) => (
-                <li
-                  key={line}
-                  className="flex items-start gap-2 rounded-md bg-background p-3 ring-1 ring-border"
-                >
-                  <CheckCircle2
-                    className="mt-0.5 size-5 shrink-0 text-primary"
-                    aria-hidden
-                  />
-                  <span>{line}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
+              <Image
+                src={PHOTOS.membershipBackdrop}
+                alt="Pontoon on Lake Wawasee"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-brand-wawasee/40 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-background/90 p-4 backdrop-blur">
+                <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                  Captain&apos;s Club · Boats
+                </p>
+                <p className="mt-1 text-sm font-semibold text-foreground">
+                  Spring de-winterize + monthly wash + fall winterize. Save
+                  ~20% vs. à la carte.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

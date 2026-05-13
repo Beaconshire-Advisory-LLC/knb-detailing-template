@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Heart, MapPin, ShieldCheck, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { BUSINESS } from "@/lib/constants";
+import { PHOTOS } from "@/lib/images";
 import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -71,6 +73,23 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-background">
+        <div className="mx-auto max-w-5xl px-4 pt-12 sm:px-6 lg:px-8">
+          <div className="relative aspect-[16/7] w-full overflow-hidden rounded-2xl shadow-lg">
+            <Image
+              src={PHOTOS.aboutOwners}
+              alt="Krista & Benjamin Hohman — KNB Detailing"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-graphite/55 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-background/90 px-4 py-2 text-xs text-muted-foreground backdrop-blur sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-sm">
+              Stand-in image — Krista &amp; Benjamin will provide their real
+              headshot before launch.
+            </div>
+          </div>
+        </div>
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 px-4 py-16 sm:px-6 lg:grid-cols-3 lg:px-8">
           <div className="lg:col-span-2">
             <h2 className="text-2xl font-bold">Our story</h2>

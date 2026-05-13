@@ -11,11 +11,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { BeforeAfterCard } from "@/components/marketing/before-after";
+import { PhotoBackdrop } from "@/components/marketing/photo-backdrop";
+import { WaveDivider } from "@/components/marketing/wave-divider";
 import {
   SERVICE_PAGES,
   findServicePage,
   type ServicePage,
 } from "@/content/services-data";
+import { PHOTOS, GALLERY_PHOTOS } from "@/lib/images";
 import { formatCurrency } from "@/lib/formatting";
 import {
   pageMetadata,
@@ -53,6 +56,15 @@ const KIND_FOR_CATEGORY: Record<
   correction: "car",
 };
 
+const HERO_PHOTO_FOR_CATEGORY: Record<ServicePage["category"], string> = {
+  auto: PHOTOS.servicesAuto,
+  boat: PHOTOS.servicesBoat,
+  rv: PHOTOS.servicesRv,
+  motorcycle: PHOTOS.servicesMotorcycle,
+  ceramic: PHOTOS.servicesCeramic,
+  correction: PHOTOS.servicesPaintCorrection,
+};
+
 export default async function ServicePage(
   props: PageProps<"/services/[slug]">,
 ) {
@@ -83,24 +95,35 @@ export default async function ServicePage(
       />
 
       {/* Hero */}
-      <section className="border-b border-border bg-secondary/30">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <Badge variant="secondary" className="mb-3">
+      <PhotoBackdrop
+        src={HERO_PHOTO_FOR_CATEGORY[service.category]}
+        alt={`${service.title} hero image`}
+        priority
+        overlayFrom="from-brand-graphite/80"
+        overlayTo="to-brand-wawasee/75"
+        className="text-white"
+      >
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+          <Badge
+            variant="secondary"
+            className="mb-3 border-white/30 bg-white/15 text-white backdrop-blur"
+          >
             {service.badge}
           </Badge>
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+          <h1 className="text-4xl font-extrabold tracking-tight text-white drop-shadow sm:text-5xl">
             {service.title}
           </h1>
-          <p className="mt-3 text-balance text-xl text-muted-foreground sm:text-2xl">
+          <p className="mt-3 text-balance text-xl text-white/90 sm:text-2xl">
             {service.hero.tagline}
           </p>
-          <p className="mt-4 max-w-2xl text-pretty text-muted-foreground">
+          <p className="mt-4 max-w-2xl text-pretty text-white/85">
             {service.hero.description}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button
               size="lg"
-              className="h-12"
+              variant="secondary"
+              className="h-12 bg-white px-8 text-brand-wawasee hover:bg-white/90"
               render={<Link href={`/book?service=${service.slug}`} />}
             >
               <Calendar className="mr-2 size-5" aria-hidden />
@@ -109,14 +132,18 @@ export default async function ServicePage(
             <Button
               variant="outline"
               size="lg"
-              className="h-12"
+              className="h-12 border-white/40 bg-white/10 px-8 text-white backdrop-blur hover:bg-white/20 hover:text-white"
               render={<Link href={`/quote?service=${service.slug}`} />}
             >
               Get an instant quote
             </Button>
           </div>
         </div>
-      </section>
+        <WaveDivider
+          fill="var(--background)"
+          className="absolute -bottom-px left-0 right-0 h-10 w-full"
+        />
+      </PhotoBackdrop>
 
       {/* What's included + Pricing */}
       <section className="bg-background">
@@ -221,22 +248,26 @@ export default async function ServicePage(
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold">Recent work</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Real before/after photos arrive as we complete more of these
-            services this season.
+            Stand-in imagery shown — real KNB before/after photos arrive as
+            we complete more of these services this season.
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <BeforeAfterCard
-              title={`${service.title} — example`}
-              kind={KIND_FOR_CATEGORY[service.category]}
-            />
-            <BeforeAfterCard
-              title={`${service.title} — example`}
-              kind={KIND_FOR_CATEGORY[service.category]}
-            />
-            <BeforeAfterCard
-              title={`${service.title} — example`}
-              kind={KIND_FOR_CATEGORY[service.category]}
-            />
+            {(() => {
+              const kindMatch = KIND_FOR_CATEGORY[service.category];
+              const matching = GALLERY_PHOTOS.filter(
+                (g) => g.kind === kindMatch,
+              );
+              // Fall back to all photos if we have <3 of this kind
+              const pool = matching.length >= 3 ? matching : GALLERY_PHOTOS;
+              return pool.slice(0, 3).map((g, i) => (
+                <BeforeAfterCard
+                  key={`${g.title}-${i}`}
+                  title={g.title}
+                  kind={g.kind}
+                  imageUrl={g.url}
+                />
+              ));
+            })()}
           </div>
         </div>
       </section>

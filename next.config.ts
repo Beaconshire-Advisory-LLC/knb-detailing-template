@@ -11,14 +11,16 @@ const nextConfig: NextConfig = {
 
   images: {
     formats: ["image/avif", "image/webp"],
-    // Supabase Storage public buckets. The {{OWNER_CONFIRM_SUPABASE_PROJECT_REF}}
-    // placeholder is replaced once the prod project is created (Phase 9 §E).
     remotePatterns: [
       {
         protocol: "https",
         hostname: "**.supabase.co",
         pathname: "/storage/v1/object/public/**",
       },
+      // Stand-in photography until the owner provides real KNB photos.
+      // Every URL using these hosts is listed in MISSING_DATA.md.
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "picsum.photos" },
     ],
   },
 
