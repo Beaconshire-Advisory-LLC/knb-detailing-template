@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { FacebookIcon } from "@/components/icons/social";
@@ -6,6 +7,7 @@ import {
   BUSINESS,
   NAV_FOOTER,
   SERVICE_AREA,
+  BEACONSHIRE,
 } from "@/lib/constants";
 
 export function SiteFooter() {
@@ -140,6 +142,34 @@ export function SiteFooter() {
             ))}
           </ul>
         </div>
+
+        {BEACONSHIRE.enabled && (
+          <div className="mt-6 flex items-center justify-center gap-2 text-[11px] text-muted-foreground/80">
+            <Image
+              src="/beaconshire-logo.png"
+              alt=""
+              width={14}
+              height={14}
+              className="opacity-70"
+            />
+            <span>
+              Built by{" "}
+              {BEACONSHIRE.url.includes("OWNER_CONFIRM") ? (
+                <span className="font-medium">{BEACONSHIRE.name}</span>
+              ) : (
+                <a
+                  href={BEACONSHIRE.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium hover:text-foreground"
+                >
+                  {BEACONSHIRE.name}
+                </a>
+              )}{" "}
+              · {BEACONSHIRE.tagline}
+            </span>
+          </div>
+        )}
       </div>
     </footer>
   );

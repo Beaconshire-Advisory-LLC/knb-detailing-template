@@ -103,6 +103,18 @@ export const NAV_PRIMARY = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
+/**
+ * Beaconshire Advisory built-by credit. Subtle credit in the site footer.
+ * Toggle to `false` to remove (the owner owns the site outright; the credit
+ * is a courtesy, not a requirement).
+ */
+export const BEACONSHIRE = {
+  enabled: true,
+  name: "Beaconshire Advisory",
+  url: "{{OWNER_CONFIRM_BEACONSHIRE_URL}}", // owner of Beaconshire fills this in
+  tagline: "Local business websites · Owned by you",
+} as const;
+
 export const NAV_FOOTER = {
   services: [
     { href: "/services/auto", label: "Auto detailing" },

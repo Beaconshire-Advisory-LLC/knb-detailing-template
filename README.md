@@ -6,6 +6,10 @@ Production website + customer portal for **KNB Detailing LLC** (Syracuse, IN).
 - Owners: Krista & Benjamin Hohman.
 - Stack: Next.js 16 (App Router) · React 19 · TypeScript · Tailwind v4 · shadcn/ui · Supabase · Stripe · Resend · Twilio · Vercel.
 
+> **New here? If you're Krista or Benjamin, the setup walkthrough lives in [`handoff/`](handoff/) — start with `handoff/01-welcome-from-beaconshire.md`.**
+>
+> *Built by [Beaconshire Advisory](#) — local business websites, owned by you.*
+
 ---
 
 ## Quick start
