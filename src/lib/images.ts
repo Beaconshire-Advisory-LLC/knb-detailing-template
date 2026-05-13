@@ -1,21 +1,12 @@
 /**
- * Photo registry — real KNB Detailing photos sourced from the owner's
- * Facebook page + the cyan-and-black brand logo, stored locally in
- * /public/photos/.
- *
- * One slot still uses an Unsplash stand-in because the owner hasn't
- * provided a matching photo yet:
- *  - `aboutOwners` (no real Krista & Benjamin headshot on file)
- *
- * Flagged in MISSING_DATA.md §3.
+ * Photo registry — every image is now a real KNB Detailing photo provided
+ * by the owner. Files live under /public/photos/.
  */
 
 const local = (file: string) => `/photos/${file}`;
-const u = (id: string, w = 1200) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 export const PHOTOS = {
-  // Hero & marketing — all real KNB photos
+  // Hero & marketing
   homeHero: local("mobile-vehicle.jpg"),         // branded silver Transit Connect work van
   homeSecondary: local("genesis.jpg"),           // Hyundai Genesis — luxury detail showcase
   membershipBackdrop: local("pontoon.jpg"),      // pontoon dockside
@@ -24,17 +15,17 @@ export const PHOTOS = {
   servicesAuto: local("genesis.jpg"),
   servicesBoat: local("boat.jpg"),
   servicesRv: local("rv-1.jpg"),
-  servicesMotorcycle: local("motorcycle.jpg"),   // red Harley custom — KNB shop floor
-  servicesCeramic: local("truck-2.jpg"),         // glossy black truck — shows ceramic finish
-  servicesPaintCorrection: local("interior.jpg"), // close-up paint/surface work
+  servicesMotorcycle: local("motorcycle.jpg"),
+  servicesCeramic: local("truck-2.jpg"),
+  servicesPaintCorrection: local("interior.jpg"),
 
   // "We come to you" feature blocks
   weComeAuto: local("suv-1.jpg"),
   weComeBoat: local("boat.jpg"),
   weComeRvMoto: local("rv-2.jpg"),
 
-  // Team / about — stand-in until owners provide a real headshot
-  aboutOwners: u("1521791136064-7986c2920216", 1200),
+  // Team / about
+  aboutOwners: local("owners.jpg"),              // Krista & Benjamin Hohman
 
   // Logo + award
   logo: local("logo.jpg"),

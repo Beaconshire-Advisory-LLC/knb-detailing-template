@@ -74,19 +74,18 @@ export default function AboutPage() {
 
       <section className="bg-background">
         <div className="mx-auto max-w-5xl px-4 pt-12 sm:px-6 lg:px-8">
-          <div className="relative aspect-[16/7] w-full overflow-hidden rounded-2xl shadow-lg">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-lg sm:aspect-[16/7]">
             <Image
               src={PHOTOS.aboutOwners}
-              alt="Krista & Benjamin Hohman — KNB Detailing"
+              alt="Krista & Benjamin Hohman — owners, KNB Detailing"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 1024px"
-              className="object-cover"
+              className="object-cover object-top"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-graphite/55 via-transparent to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-background/90 px-4 py-2 text-xs text-muted-foreground backdrop-blur sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-sm">
-              Stand-in image — Krista &amp; Benjamin will provide their real
-              headshot before launch.
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-graphite/65 via-brand-graphite/10 to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-background/92 px-4 py-3 text-sm font-medium text-foreground backdrop-blur sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-sm">
+              Krista &amp; Benjamin Hohman — owners.
             </div>
           </div>
         </div>

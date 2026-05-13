@@ -28,11 +28,12 @@ Every line below is a placeholder that the codebase ships with `{{OWNER_CONFIRM_
 
 ## 3 · Brand assets
 
-**16 real KNB photos are now live** in `public/photos/` and wired through `src/lib/images.ts`:
+**All 17 image slots are now real KNB photos.** Every file lives in `public/photos/` and is wired through `src/lib/images.ts`. No more stand-ins.
 
 - `logo.jpg` — real cyan + black KNB Detailing wordmark with car silhouette
 - `mobile-vehicle.jpg` — branded silver Ford Transit Connect work van (home hero)
 - `award.jpg` — Best of BusinessRate 2025 plaque (Kosciusko County)
+- `owners.jpg` — Krista &amp; Benjamin Hohman (about page)
 - `boat.jpg`, `pontoon.jpg`, `jet-ski.jpg` — watercraft
 - `genesis.jpg`, `interior.jpg` — auto + interior detail
 - `motorcycle.jpg` — red Harley-Davidson custom on KNB shop floor
@@ -40,12 +41,6 @@ Every line below is a placeholder that the codebase ships with `{{OWNER_CONFIRM_
 - `suv-1.jpg`, `suv-2.jpg` — SUV detail
 - `truck-1.jpg`, `truck-2.jpg` — truck detail
 - `semi.jpg` — International commercial tractor + horse trailer
-
-Only **1 slot still uses an Unsplash stand-in**:
-
-| Item | Where | Status |
-|------|-------|--------|
-| About-page owner photo | `src/lib/images.ts` → `PHOTOS.aboutOwners` | **Unsplash silhouette stand-in** — needs real Krista &amp; Benjamin headshot |
 
 Other minor items:
 
