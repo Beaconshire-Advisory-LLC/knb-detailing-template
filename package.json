@@ -11,7 +11,11 @@
     "db:types": "supabase gen types typescript --linked > src/types/db.ts",
     "db:push": "supabase db push",
     "db:reset": "supabase db reset",
-    "stripe:setup": "tsx scripts/stripe-setup.ts"
+    "stripe:setup": "tsx scripts/stripe-setup.ts",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test"
   },
   "engines": {
     "node": ">=20.9.0",
@@ -50,16 +54,21 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
+    "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "^4.1.6",
     "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "happy-dom": "^20.9.0",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.6"
   }
 }
