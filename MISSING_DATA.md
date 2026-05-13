@@ -1,77 +1,86 @@
 # Missing data — owner input still required
 
-Every line below is a placeholder that the codebase ships with `{{OWNER_CONFIRM_*}}` text. Replace the values, then delete the row. Items are grouped by topic, not by phase.
+Every line below is a placeholder that the codebase ships with `{{OWNER_CONFIRM_*}}` text. Replace the values, then delete the row. Items are grouped by topic.
 
-**As of Phase 1 — scaffolding complete.**
+**Final pass — all 10 phases complete.** Items below are the punch list for the owner to provide before launch.
 
 ---
 
 ## 1 · Business identity
 
-| Item | Where | Status | Recommended |
-|------|-------|--------|-------------|
-| Business email | `src/lib/constants.ts` → `BUSINESS.email` | Placeholder `{{OWNER_CONFIRM_EMAIL}}` | `hello@knbdetailing.com` (set up via Google Workspace or Fastmail — see DEPLOYMENT.md §D) |
-| Hours of operation | `src/lib/constants.ts` → `BUSINESS.hours` | Default placeholder Mon–Sat 8a–6p, Sun by appt | Confirm or correct |
-| Indiana SOS entity number | `src/lib/constants.ts` → `BUSINESS.indianaSosEntityId` | Placeholder | Retrieve at <https://bsd.sos.in.gov/PublicBusinessSearch> |
-| Indiana SOS formation date | `src/lib/constants.ts` → `BUSINESS.indianaSosFormationDate` | Placeholder | Same as above |
-| Indiana SOS registered agent | `src/lib/constants.ts` → `BUSINESS.indianaSosRegisteredAgent` | Placeholder | Same as above |
+| Item | Where | Recommended default |
+|------|-------|---------------------|
+| Business email | `src/lib/constants.ts` → `BUSINESS.email` | `hello@knbdetailing.com` (set up via Google Workspace in DEPLOYMENT.md §D) |
+| Hours of operation | `src/lib/constants.ts` → `BUSINESS.hours` | Default Mon–Sat 8a–6p, Sun by appt — confirm or change |
+| Indiana SOS entity number | `src/lib/constants.ts` → `BUSINESS.indianaSosEntityId` | Retrieve at <https://bsd.sos.in.gov/PublicBusinessSearch> |
+| Indiana SOS formation date | `src/lib/constants.ts` → `BUSINESS.indianaSosFormationDate` | Same source |
+| Indiana SOS registered agent | `src/lib/constants.ts` → `BUSINESS.indianaSosRegisteredAgent` | Same source |
+| Tagline (optional override) | `src/lib/constants.ts` → `BUSINESS.tagline` | Default: "Lake-ready. Showroom-clean." |
 
 ## 2 · Online presence
 
-| Item | Where | Status |
-|------|-------|--------|
-| Instagram handle / URL | `src/lib/constants.ts` → `BUSINESS.social.instagram` | Placeholder |
-| Google Business Profile URL | `src/lib/constants.ts` → `BUSINESS.social.google` | Placeholder — needs to be claimed |
-| Twitter / X handle (optional) | `src/lib/constants.ts` → `SITE.twitterHandle` | Placeholder |
-| Kosciusko Chamber listing URL | `src/lib/constants.ts` → `BUSINESS.chambers[1].url` | Placeholder |
+| Item | Where |
+|------|-------|
+| Instagram URL | `src/lib/constants.ts` → `BUSINESS.social.instagram` |
+| Google Business Profile URL (after claiming) | `src/lib/constants.ts` → `BUSINESS.social.google` |
+| Twitter/X handle (optional) | `src/lib/constants.ts` → `SITE.twitterHandle` |
+| Kosciusko Chamber listing URL | `src/lib/constants.ts` → `BUSINESS.chambers[1].url` |
 
 ## 3 · Brand assets
 
 | Item | Where | Status |
 |------|-------|--------|
-| Final logo (SVG + transparent PNG @1x/2x) | `public/logo.svg`, `public/logo.png` | **Using placeholder wordmark** at `public/logo-placeholder.svg` |
-| Default OG / Twitter share image (1200×630) | `public/og-default.png` | **Not yet created** — referenced by `lib/seo.ts` but file is missing |
-| Favicon set | `src/app/favicon.ico`, `icon.png`, `apple-icon.png` | Next.js default favicon — replace with branded |
+| Final logo (SVG + transparent PNG) | `public/logo.svg`, `public/logo.png` | Placeholder wordmark at `public/logo-placeholder.svg` — used in header/footer |
 | Owner headshots (Krista, Benjamin) | `public/team/krista.jpg`, `public/team/benjamin.jpg` | Not provided |
-| Before / after gallery photos (20+, categorized) | Supabase Storage `gallery/` bucket | Not provided — Phase 2 setup |
-| Chamber logo files | `public/chambers/*.png` | Not provided — text links used in footer for now |
-| Insurance carrier / policy info for trust badges | (not yet wired) | Not provided |
+| Before / after gallery photos | Supabase Storage `gallery/` bucket | Not provided — gradient placeholder cards used until real photos exist |
+| Chamber logo files | `public/chambers/*.png` | Text links only |
+| Insurance carrier / policy info for footer | not yet wired | Optional, for trust display |
+| Favicon + apple-icon set | `src/app/icon.png`, `src/app/apple-icon.png` | Next.js default in use — replace with branded |
 
-## 4 · Service catalog (Phase 2 seed)
+## 4 · Service catalog confirmation (Phase 2 seed)
 
-Owner must confirm before the catalog goes live:
-- Which **recommended additions** to actually offer: ceramic coating, paint correction, headlight restoration, engine-bay, interior shampoo, pet hair, ozone deodorizing, gel-coat oxidation removal, wax/sealant programs, boat winterization.
-- **Final pricing** for each tier (Express / Full / Premium / Ceramic) × vehicle size (Compact / Midsize / Large / XL / XXL).
-- **Deposit percentage** (default 25%).
-- **Cancellation policy** wording (default: >48h full refund, 24–48h 50%, <24h none).
+Owner must confirm in /admin/services or directly in `supabase/seed.sql` before going live:
+
+- Which recommended add-ons to actually offer: ceramic, paint correction, headlight restoration, engine-bay, interior shampoo, pet hair, ozone, gel-coat oxidation, wax/sealant programs, boat winterization
+- Final pricing for each tier × vehicle size (15 services × up to 5 sizes)
+- Deposit percentage (default 25%)
+- Cancellation policy wording (defaults are encoded in `lib/pricing.ts` and stated on Terms page)
 
 ## 5 · Legal / compliance
 
 | Item | Status |
 |------|--------|
-| Privacy policy reviewed by counsel | Will be drafted in Phase 3 — owner should have reviewed before launch |
+| Privacy policy reviewed by counsel | Drafted — recommended counsel review before launch |
 | Terms of service reviewed by counsel | Same |
 | Accessibility statement | Same |
-| Indiana sales tax stance on ceramic coating products | Default 0% in admin — confirm with CPA (James Flecker, Beaconshire Advisory) before charging customers |
+| Indiana sales tax on ceramic-coating products | Default 0% — confirm with James Flecker (CPA) |
 
-## 6 · Tagline / brand voice
+## 6 · Reviews
 
-- Default tagline used: **"Lake-ready. Showroom-clean."** — confirm or override (`BUSINESS.tagline`).
-- Default self-description draws from the Syracuse-Wawasee Chamber listing — confirm voice.
+- Placeholder reviews in `src/lib/placeholders.ts` are clearly flagged with `{{OWNER_CONFIRM}}` in the display names. They render until real reviews are approved through /admin/reviews.
 
-## 7 · Accounts not yet provisioned (Phase 9)
+## 7 · Accounts to provision (DEPLOYMENT.md §A)
 
-These are *not* the codebase's problem to solve but the owner needs to create them:
+Status tracker for owner:
 
-- Cloudflare (domain registrar + DNS)
-- Vercel (hosting)
-- Supabase project (`knb-detailing-prod`)
-- Stripe (LIVE mode after business activation — needs EIN + bank info)
-- Resend (sender domain verification)
-- Twilio (A2P 10DLC registration takes 1–3 days)
-- Google Workspace or Fastmail (for `hello@knbdetailing.com`)
-- Google Business Profile (claim)
-- Apple Developer (only if Apple OAuth is desired — Phase 4 will gracefully degrade without)
-- Sentry (optional error monitoring — Phase 8)
+- [ ] Cloudflare account + domain registered
+- [ ] Vercel account
+- [ ] Supabase project `knb-detailing-prod`
+- [ ] Stripe activated for live payments
+- [ ] Resend domain verified
+- [ ] Twilio A2P 10DLC approved
+- [ ] Google Workspace `hello@knbdetailing.com`
+- [ ] Google Business Profile claimed
+- [ ] Sentry (optional)
 
-Full step-by-step in `DEPLOYMENT.md`.
+## 8 · First admin promotion
+
+After Krista signs up at /portal/signup, run this once in Supabase SQL editor:
+
+```sql
+update profiles set role = 'admin' where email = 'krista@knbdetailing.com';
+```
+
+---
+
+That's the full list. Everything else in the codebase is real, working code with production-ready copy.

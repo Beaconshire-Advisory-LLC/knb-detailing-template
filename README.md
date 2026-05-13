@@ -66,16 +66,16 @@ scripts/
 
 | Phase | Status | What's in |
 |-------|--------|-----------|
-| 1 — Scaffolding | ✅ | Next.js 16 + Tailwind v4 + shadcn/ui, brand tokens, root layout, marketing route group with header / footer / mobile CTA, placeholder home, all handoff docs. |
-| 2 — Database schema (Supabase) | ⏳ | — |
-| 3 — Marketing site | ⏳ | — |
-| 4 — Auth & customer portal | ⏳ | — |
-| 5 — Admin panel | ⏳ | — |
-| 6 — Payments (Stripe) | ⏳ | — |
-| 7 — Notifications (Resend + Twilio) | ⏳ | — |
-| 8 — Testing & hardening | ⏳ | — |
-| 9 — Deployment & DNS | ⏳ | — |
-| 10 — Owner training | ⏳ | — |
+| 1 — Scaffolding | ✅ | Next.js 16 + Tailwind v4 + shadcn/ui (base-ui), brand tokens, root layout, marketing route group with header / footer / mobile CTA. |
+| 2 — Database schema (Supabase) | ✅ | 17 tables, RLS on every one, auto-profile-on-signup trigger, seed catalog with 15 services + 11 packages + 14 service ZIPs. |
+| 3 — Marketing site | ✅ | All public routes, MDX blog with 3 starter posts, contact + quote + booking forms with server actions, legal pages, dynamic sitemap, OG image generator. |
+| 4 — Auth & customer portal | ✅ | Supabase auth (magic-link + Google OAuth), `src/proxy.ts` gate, dashboard, vehicles, appointments, membership, billing, referrals, profile. |
+| 5 — Admin panel | ✅ | Appointments (today/week/all with ZIP grouping), customers, vehicles, services, reviews queue, coupons CRUD, reports, blog/settings/availability views. |
+| 6 — Payments (Stripe) | ✅ | Booking deposit checkout, balance off-session charge, refund per policy, subscriptions, customer portal, webhook with idempotency, gift cards. |
+| 7 — Notifications (Resend + Twilio) | ✅ | React Email templates, unified notify(), Twilio SMS with opt-in, Vercel cron at 9am Indiana time for 24-hour reminders. |
+| 8 — Testing & hardening | ✅ | 28 Vitest unit tests, Playwright + axe e2e, pino logger with PII redaction, in-memory rate limiter. |
+| 9 — Deployment & DNS | ✅ | DEPLOYMENT.md covers every step from "owner has nothing" to "live with real payments". |
+| 10 — Owner training | ✅ | OWNER_GUIDE.md + LAUNCH_CHECKLIST.md + final MISSING_DATA.md punch list. |
 
 See `MISSING_DATA.md` for everything still flagged `{{OWNER_CONFIRM_*}}`.
 
