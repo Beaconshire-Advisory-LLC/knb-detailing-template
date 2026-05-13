@@ -26,7 +26,9 @@ The message James sends to Krista & Benjamin. Replace the bracketed placeholders
 >
 > [SETUP_WALKTHROUGH_URL]
 >
-> The instructions are written to be self-serve — you don't need to call me or schedule anything. Read top to bottom, click as you go. There's a one-click "Deploy to Vercel" button that handles the technical setup for you.
+> The instructions are written to be self-serve — you don't need to call me or schedule anything. Read top to bottom, click as you go.
+>
+> **For the easiest path, open the attached PDF: *Quick-Start-Tutorial.pdf***. It's a 13-page branded guide that walks you through every keystroke — accessing the code on GitHub, getting your own copy, previewing the site, and uploading it to Vercel. Written for total beginners. Works the same on Mac or PC. About 30 minutes of clicking.
 >
 > **Quick links to all the docs:**
 >
