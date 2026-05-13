@@ -28,22 +28,23 @@ Every line below is a placeholder that the codebase ships with `{{OWNER_CONFIRM_
 
 ## 3 · Brand assets
 
-**13 real KNB photos are now live** in `public/photos/` and wired through `src/lib/images.ts`:
+**16 real KNB photos are now live** in `public/photos/` and wired through `src/lib/images.ts`:
 
 - `logo.jpg` — real cyan + black KNB Detailing wordmark with car silhouette
 - `mobile-vehicle.jpg` — branded silver Ford Transit Connect work van (home hero)
 - `award.jpg` — Best of BusinessRate 2025 plaque (Kosciusko County)
-- `boat.jpg`, `pontoon.jpg` — boat dockside shots
-- `genesis.jpg`, `interior.jpg` — auto & interior detail shots
+- `boat.jpg`, `pontoon.jpg`, `jet-ski.jpg` — watercraft
+- `genesis.jpg`, `interior.jpg` — auto + interior detail
+- `motorcycle.jpg` — red Harley-Davidson custom on KNB shop floor
 - `rv-1.jpg`, `rv-2.jpg` — RV work
-- `suv-1.jpg`, `suv-2.jpg` — SUV details
-- `truck-1.jpg`, `truck-2.jpg` — truck details
+- `suv-1.jpg`, `suv-2.jpg` — SUV detail
+- `truck-1.jpg`, `truck-2.jpg` — truck detail
+- `semi.jpg` — International commercial tractor + horse trailer
 
-Only **2 slots still use Unsplash stand-ins** because the owner hasn't provided matching photos yet:
+Only **1 slot still uses an Unsplash stand-in**:
 
 | Item | Where | Status |
 |------|-------|--------|
-| Motorcycle service hero | `src/lib/images.ts` → `PHOTOS.servicesMotorcycle` | **Unsplash stand-in** — owner has no motorcycle detail photos on file yet |
 | About-page owner photo | `src/lib/images.ts` → `PHOTOS.aboutOwners` | **Unsplash silhouette stand-in** — needs real Krista &amp; Benjamin headshot |
 
 Other minor items:
