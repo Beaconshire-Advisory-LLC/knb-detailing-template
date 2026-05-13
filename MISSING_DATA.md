@@ -28,14 +28,33 @@ Every line below is a placeholder that the codebase ships with `{{OWNER_CONFIRM_
 
 ## 3 · Brand assets
 
+**Important**: the site currently shows **25 stand-in photos** from Unsplash so it doesn't look plain. Every one is a temporary placeholder — none of them are real KNB jobs. All listed by key in `src/lib/images.ts`, used across:
+
+- Home hero (1), home decorative side image (1), membership backdrop (1), about owners photo (1)
+- 6 service category hero photos (auto / boat / RV / motorcycle / ceramic / paint-correction)
+- 3 "We come to you" feature thumbnails
+- 12 gallery cards
+
+When real KNB photos arrive, replace the URL in `src/lib/images.ts` and the site picks them up automatically.
+
 | Item | Where | Status |
 |------|-------|--------|
-| Final logo (SVG + transparent PNG) | `public/logo.svg`, `public/logo.png` | Placeholder wordmark at `public/logo-placeholder.svg` — used in header/footer |
-| Owner headshots (Krista, Benjamin) | `public/team/krista.jpg`, `public/team/benjamin.jpg` | Not provided |
-| Before / after gallery photos | Supabase Storage `gallery/` bucket | Not provided — gradient placeholder cards used until real photos exist |
-| Chamber logo files | `public/chambers/*.png` | Text links only |
+| Final logo (SVG + transparent PNG) | `public/logo.svg`, `public/logo.png` | Placeholder wordmark at `public/logo-placeholder.svg` |
+| Owner headshot | `src/lib/images.ts` → `PHOTOS.aboutOwners` | **Stand-in Unsplash photo** — replace with real Krista &amp; Benjamin headshot |
+| Home hero photo | `src/lib/images.ts` → `PHOTOS.homeHero` | **Stand-in** — replace with a real Lake-Wawasee detail shot |
+| Service category heroes (×6) | `src/lib/images.ts` → `PHOTOS.servicesAuto`, `servicesBoat`, `servicesRv`, `servicesMotorcycle`, `servicesCeramic`, `servicesPaintCorrection` | **Stand-ins** — replace per category |
+| Gallery photos (×12) | `src/lib/images.ts` → `GALLERY_PHOTOS` | **Stand-ins** — replace with real before/after shots |
+| Membership backdrop | `src/lib/images.ts` → `PHOTOS.membershipBackdrop` | **Stand-in** pontoon-on-lake placeholder |
+| Chamber logo files | `public/chambers/*.png` | Text links only — optional |
 | Insurance carrier / policy info for footer | not yet wired | Optional, for trust display |
 | Favicon + apple-icon set | `src/app/icon.png`, `src/app/apple-icon.png` | Next.js default in use — replace with branded |
+
+### How to replace the stand-in photos
+
+1. Krista downloads her best before/after photos (she has many on the Facebook page — Meta doesn't let me fetch them automatically).
+2. Upload to Supabase Storage's `gallery/` bucket (public).
+3. Copy the public URL into `src/lib/images.ts` — replace each `u("...")` call with the new Supabase URL string.
+4. Commit + push. Vercel rebuilds; real photos go live.
 
 ## 4 · Service catalog confirmation (Phase 2 seed)
 
