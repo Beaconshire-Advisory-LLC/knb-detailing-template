@@ -1,6 +1,12 @@
 # Beaconshire Local Business Website Package — internal runbook
 
-**Confidential — for Beaconshire Advisory operators only.** This is the repeatable playbook for delivering a turnkey website to any local business. KNB Detailing was the first; this doc captures the pattern so the second, fifth, and twentieth are smooth.
+**Confidential — for Beaconshire Advisory operators only.** Repeatable playbook for delivering a turnkey website to any local business in **one email** with **zero follow-up required**. KNB Detailing was the first; this doc captures the pattern so the second, fifth, and twentieth are smooth.
+
+## The delivery model
+
+**One email, total no-touch.** Each engagement ends when you hit send on the delivery email. The customer either launches the site themselves following the handoff docs, or doesn't — either way you don't have to schedule anything, jump on calls, or chase them down.
+
+This is not "consultative." It's "here's a complete package; click this button if you want it." More like dropping off a gift than running a service business.
 
 ---
 
@@ -40,33 +46,43 @@ You make money on the project, not on residuals. Each engagement is a complete, 
 
 ## The pipeline
 
-### Lead → close (typical 2 weeks)
+### Lead → delivered (typical 1 week, mostly on your side)
 
-1. **Discovery call** (30 min, free).
-   - Look at their existing online presence (Facebook, Google Business Profile, any website).
-   - Confirm the business is a fit: services like detailing, mobile, real-estate-adjacent, lawn care, HVAC, contractors. Avoid e-commerce / heavy inventory; this template doesn't fit.
-   - Pitch: "We build you a complete site, you own it outright, no monthly fees to us. $X. Want to see a demo?"
+1. **(Optional) Discovery touchpoint** — chat at a chamber event, DM on Facebook, a tax-prep conversation. Confirm fit (see industry list below) and ask for their photos + business details. **No call required.**
 
-2. **Demo + proposal** (within 48 hours of discovery).
-   - Spin up a Vercel preview of the KNB site with their tagline + photos substituted (use the customization script — see "Per-engagement customization" below).
-   - Send the URL.
-   - Attach a 1-page proposal with scope + price.
+2. **Customize the template** (4–24 hours of your work, depending on tier — see "Per-engagement customization").
 
-3. **Signed agreement + 50% deposit**.
+3. **Push to a public GitHub repo** under your Beaconshire account.
 
-4. **Build / customize** (3–7 business days).
+4. **Deploy a preview to your Vercel** — gives them a clickable demo URL.
 
-5. **Schedule Session 1** (Account creation call).
+5. **Send the delivery email** (use `handoff/EMAIL_TO_OWNERS.md` as the template). Plug in:
+   - Their preview URL
+   - Their GitHub template URL
+   - Links to the handoff docs
 
-### Build → live (typical 5–10 business days)
+6. **You're done.** No follow-up call to schedule. They either launch using the handoff guide or they don't. The email itself is the delivery.
 
-The 4-session sequence from `02-setup-walkthrough.md`:
+### What you charge
 
-- **Session 1** (90 min): account creation.
-- **Async wait**: 1–3 days for Stripe + Twilio.
-- **Session 2** (20 min): DNS records.
-- **Session 3** (60 min): deploy + final wiring.
-- **Session 4** (30 min): end-to-end test + final invoice.
+**$X — paid up-front before you start customizing, OR billed after delivery on net-30 terms with an invoice attached to the delivery email.** Pick one and be consistent.
+
+If you bill after delivery, accept that some won't pay — price the package so even a 60% collection rate is profitable. ~$1,500 to ~$3,500 net is a healthy range for the customization work involved.
+
+### What the customer does (you never see it)
+
+Following `handoff/02-setup-walkthrough.md`:
+
+- **Part 1** (60 min, day 1): create 8 accounts in their name
+- **Part 2** (15 min): click the Vercel Deploy Button → site is live
+- **Part 3** (15 min): DNS records
+- **Part 4** (10 min): paste SQL into Supabase web editor
+- **Part 5** (1–3 days, async): wait for Stripe + Twilio approval
+- **Part 6** (10 min): switch to live keys + webhook
+- **Part 7** (1 min): SQL one-liner to promote themselves to admin
+- **Part 8** (15 min): $1 test booking + refund
+
+Total active time: ~2 hours. Zero of which involves you.
 
 ## Per-engagement customization
 
@@ -180,80 +196,61 @@ Pattern: local service business, mobile or location-based, customers book by app
 
 **Outreach** (for non-existing clients): Indiana small business chambers, Facebook business pages with no link in bio, Google Maps listings for service businesses with no website link.
 
-## Operational checklist per engagement
+## Operational checklist per engagement (your side only)
 
-### Pre-Session 1
+### Before you start customizing
 
-- [ ] Signed agreement + 50% deposit received
-- [ ] Customization completed (Tier 1 + Tier 2 as needed)
-- [ ] Test deploy spun up at `<client-slug>.vercel.app` (Beaconshire account; will be moved to client account in Session 3)
-- [ ] All assets (photos, logo, copy) in place
-- [ ] `MISSING_DATA.md` reviewed — anything still needing owner confirmation is documented
-- [ ] Zoom / Google Meet scheduled with client
-- [ ] Pre-session email sent with the "Before our call" checklist from `01-welcome-from-beaconshire.md`
+- [ ] Confirm fit (see industry list below — this template is wrong for some)
+- [ ] Get their photos (Facebook downloads work fine), logo, and business basics (name, owners, phone, hours, service area)
+- [ ] Get their preferred tagline if they have one — otherwise pick one yourself
 
-### During Session 1
+### Customization session (your work, 4–24 hours depending on tier)
 
-- [ ] Both owners (or all decision-makers) on the call
-- [ ] Walk through accounts in order (Cloudflare → Vercel → GitHub → Supabase → Resend → Twilio → Google Workspace → Stripe)
-- [ ] **Critical: every credential is the client's, not yours.** Confirm verbally for each.
-- [ ] Client copies all env vars into a notes doc, not into chat
-- [ ] Schedule Session 2 before ending (DNS records, 24h out)
-- [ ] Send a thank-you email + a screenshot of their account dashboard tabs
+- [ ] Tier 1: business identity, photos, services, blog posts, brand colors, logo
+- [ ] Tier 2: legal entity references, package metadata, redirects
+- [ ] Tier 3 (only if industry differs significantly): portal route names, admin sections, membership flow
 
-### During Async wait
+### Push and deploy (15 min, your side)
 
-- [ ] Day 1 morning: confirm Stripe activation email arrived
-- [ ] Day 2: nudge them to check Twilio A2P approval inbox
-- [ ] Send a "Hey, just waiting on the carrier — should be ready by Tuesday" check-in
+- [ ] `gh repo create beaconshire-advisory/<client-slug>-template --public --source=. --remote=origin --push`
+- [ ] `pnpm dlx vercel --prod` — get a `*.vercel.app` preview URL
+- [ ] Open the preview URL yourself and click through. Look for anything obviously wrong (typos, broken images, wrong copy).
 
-### During Session 3
+### Send the delivery email
 
-- [ ] Switch Stripe to live keys
-- [ ] Run `pnpm db:push` + seed
-- [ ] Run `pnpm stripe:setup` against live keys
-- [ ] Verify webhook signing secret in Vercel
-- [ ] Promote client to admin via SQL
-- [ ] Sign client out of all admin areas, sign back in as them, verify
+- [ ] Open `handoff/EMAIL_TO_OWNERS.md`
+- [ ] Fill in the 6 placeholders (preview URL + 5 doc URLs)
+- [ ] Send from your Beaconshire email
+- [ ] Send invoice as attachment if billing after delivery
+- [ ] **Engagement complete.** No follow-up required from you.
 
-### During Session 4 (End-to-end test)
+### What happens next (not your responsibility)
 
-- [ ] $1 test booking with real card
-- [ ] Confirmation email + SMS received
-- [ ] Appointment appears in admin
-- [ ] Mark complete, charge balance test
-- [ ] Refund the test payment
+The owner reads the email, clicks the preview, decides if they want to launch. If they do, they follow `02-setup-walkthrough.md` and the site goes live within a week.
 
-### Post-launch
+You may occasionally get a "stuck on launch day" question via DM or email. These are 5-minute answers and a good way to build goodwill — but they should be rare with a well-written walkthrough.
 
-- [ ] **Remove yourself from GitHub repo** (Settings → Collaborators → leave)
-- [ ] Send invoice for remaining 50%
-- [ ] Send the post-launch handoff doc (`03-after-launch.md`) with a 1-week follow-up scheduled
-- [ ] Add to your "previously delivered" list for case study / testimonial
+### When to follow up (limited cases)
 
-### 30 days after launch
-
-- [ ] Check-in call (15 min): how's it going, any issues, any features they want to add
-- [ ] Ask for a Google review / testimonial — they're more likely to give one when it's still fresh
-- [ ] Pitch optional add-on services (photo retouching, blog writing, GBP optimization)
+- **Never proactively.** No "checking in" emails, no "how's it going" Zooms.
+- **Only when they reach out.** Treat each ping as a 5-15 minute support touch. Bill if it crosses 30 minutes.
+- **Bigger asks** (new feature, new service, photo retouching) — quote separately at $X/hour or as a fixed scope.
 
 ## Risks and how to handle them
 
-### Risk: Client wants you to host on their behalf
+### Risk: Client tries to drag you into hosting
 
-**Don't do it on your accounts.** Either:
-1. Their accounts, you have temporary access for ops → bill hourly when used
-2. They take ownership; you're available on a per-call basis
+**Don't do it.** The model only works if they own everything. Holding their Stripe keys is legally messy. If they insist on you managing it: politely decline, or quote a recurring price that reflects the risk (~$300/mo minimum).
 
-Holding their Stripe keys is legally hairy. Don't.
+### Risk: Client expects ongoing development for free
 
-### Risk: Client wants major customization mid-build
+The package is a one-time delivery. Anything past launch is a separate scope. Example responses:
+- "That's a great idea — quote forthcoming. Probably $X for a Saturday morning of work."
+- "That's outside what we delivered. Want me to put together a proposal?"
 
-Push back early. The template is the deal. Major customization is a separate proposal.
+### Risk: Client emails 6 months later confused about something
 
-Example responses:
-- "That's a great idea — I'd want to do that right. Can we ship the base site and add this as a Phase 2 in 4 weeks?"
-- "That's outside the package. Let me put together a proposal for it as an add-on — about $X."
+Treat one-off questions as goodwill. **15 minutes free, anything beyond billed.** A 5-minute answer to a launch-day question buys you a referral.
 
 ### Risk: Stripe account gets flagged for fraud
 

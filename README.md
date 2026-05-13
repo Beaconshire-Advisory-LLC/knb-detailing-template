@@ -6,9 +6,28 @@ Production website + customer portal for **KNB Detailing LLC** (Syracuse, IN).
 - Owners: Krista & Benjamin Hohman.
 - Stack: Next.js 16 (App Router) · React 19 · TypeScript · Tailwind v4 · shadcn/ui · Supabase · Stripe · Resend · Twilio · Vercel.
 
-> **New here? If you're Krista or Benjamin, the setup walkthrough lives in [`handoff/`](handoff/) — start with `handoff/01-welcome-from-beaconshire.md`.**
->
-> *Built by [Beaconshire Advisory](#) — local business websites, owned by you.*
+---
+
+## 👉 Are you Krista or Benjamin?
+
+Welcome. This is your website. **Click the button below to deploy it into accounts you own.**
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbeaconshire-advisory%2Fknb-detailing-template&project-name=knb-detailing&repository-name=knb-detailing&env=NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY,STRIPE_SECRET_KEY,NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,RESEND_API_KEY,RESEND_FROM_EMAIL,OWNER_NOTIFICATION_EMAIL,TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,TWILIO_PHONE_NUMBER,CRON_SECRET&envDescription=All%20values%20live%20in%20the%20notes%20doc%20you%20created%20in%20Part%201%20of%20the%20Setup%20Walkthrough)
+
+**Read this in order — about 2 hours of clicking, plus 1–3 days waiting on Stripe and the SMS carrier:**
+
+1. **[Welcome — what you're getting](handoff/01-welcome.md)** (3 min read)
+2. **[Setup walkthrough — every step](handoff/02-setup-walkthrough.md)** (the main guide — ~2 hours of doing)
+3. **[After launch — get found on Google](handoff/03-after-launch.md)** (45 min)
+4. **[Troubleshooting — if something breaks](handoff/04-troubleshooting.md)** (reference)
+
+For day-to-day operations once you're live: **[OWNER_GUIDE.md](OWNER_GUIDE.md)**.
+
+This site is yours, free and clear — no subscription, no fees to Beaconshire Advisory, no follow-up calls required. Every account is in your name.
+
+---
+
+*Built by [Beaconshire Advisory](#) — local business websites, owned by you.*
 
 ---
 

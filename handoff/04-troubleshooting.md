@@ -2,7 +2,7 @@
 
 **Beaconshire Advisory · KNB Detailing turnkey package**
 
-You should never need to read this — but if you do, here's what to do.
+Self-serve reference. Most issues are solved in 5 minutes by checking the relevant service dashboard. Read the section that matches your symptom; the fix is almost always in the dashboard of the service that owns the problem.
 
 ---
 
@@ -158,18 +158,20 @@ These take 15–30 minutes each. Beaconshire's a Zoom call away.
 
 ---
 
-## Who to contact for what
+## Where to look for each kind of issue
 
-| Issue | First stop |
+| Symptom | Dashboard to open |
 |---|---|
-| Site is down | Vercel dashboard → Deployments tab → latest deployment logs |
-| Payment / billing issue with a customer | Stripe Dashboard → Payments |
-| Email not arriving | Resend Dashboard → Emails |
-| SMS not arriving | Twilio Console → Messaging Logs |
-| Domain / DNS issue | Cloudflare → DNS tab |
-| Database, login, or portal issue | Supabase Dashboard → SQL Editor |
-| Anything you can't figure out in 15 minutes | Beaconshire Advisory — your developer |
-| Legal / contract / tax question (W-9, COI request, sales tax) | Beaconshire Advisory — your CPA |
+| Site is down | Vercel → your project → Deployments → click the latest |
+| Payment / billing issue with a customer | Stripe → Payments → search by customer email |
+| Email not arriving | Resend → Emails → search recipient address |
+| SMS not arriving | Twilio Console → Monitor → Logs → Messaging |
+| Domain / DNS issue | Cloudflare → DNS → Records |
+| Database, login, or portal issue | Supabase → SQL Editor or Authentication tab |
+
+Each dashboard has built-in support docs and a chat or email contact if their service is what's broken. **You don't need to contact me** — these are professional platforms with their own support teams.
+
+If after 30 minutes of working through the docs above you still can't solve it and want a second pair of eyes, you can reach Beaconshire Advisory through whatever channel you used originally (email or Facebook). I don't charge for "stuck on launch day" questions — but the goal is that you never need that.
 
 ---
 
@@ -185,8 +187,8 @@ Each service has account recovery (email-based reset). Worst case: Stripe suppor
 
 > "I have to pay Beaconshire forever."
 
-No. We did the one-time setup. You owe nothing after launch.
+No. The package was a one-time delivery. You owe nothing ongoing.
 
 ---
 
-*Built by Beaconshire Advisory. You own this site outright. We're a Zoom away if you need us.*
+*Built by Beaconshire Advisory. You own this site outright.*
