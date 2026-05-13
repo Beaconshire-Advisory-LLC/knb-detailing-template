@@ -15,6 +15,7 @@
   /* Brand palette (raw — exposed as utilities like bg-brand-wawasee) */
   --color-brand-wawasee: #0e4d7f;
   --color-brand-teal: #1f8fa8;
+  --color-brand-cyan: #29abe0;        /* KNB logo cyan — matches the wordmark */
   --color-brand-polish: #f7f8fa;
   --color-brand-graphite: #1a1d21;
   --color-brand-chrome: #c7ccd1;

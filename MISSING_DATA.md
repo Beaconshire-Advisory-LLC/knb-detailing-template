@@ -28,32 +28,38 @@ Every line below is a placeholder that the codebase ships with `{{OWNER_CONFIRM_
 
 ## 3 · Brand assets
 
-**Important**: the site currently shows **25 stand-in photos** from Unsplash so it doesn't look plain. Every one is a temporary placeholder — none of them are real KNB jobs. All listed by key in `src/lib/images.ts`, used across:
+**13 real KNB photos are now live** in `public/photos/` and wired through `src/lib/images.ts`:
 
-- Home hero (1), home decorative side image (1), membership backdrop (1), about owners photo (1)
-- 6 service category hero photos (auto / boat / RV / motorcycle / ceramic / paint-correction)
-- 3 "We come to you" feature thumbnails
-- 12 gallery cards
+- `logo.jpg` — real cyan + black KNB Detailing wordmark with car silhouette
+- `mobile-vehicle.jpg` — branded silver Ford Transit Connect work van (home hero)
+- `award.jpg` — Best of BusinessRate 2025 plaque (Kosciusko County)
+- `boat.jpg`, `pontoon.jpg` — boat dockside shots
+- `genesis.jpg`, `interior.jpg` — auto & interior detail shots
+- `rv-1.jpg`, `rv-2.jpg` — RV work
+- `suv-1.jpg`, `suv-2.jpg` — SUV details
+- `truck-1.jpg`, `truck-2.jpg` — truck details
 
-When real KNB photos arrive, replace the URL in `src/lib/images.ts` and the site picks them up automatically.
+Only **2 slots still use Unsplash stand-ins** because the owner hasn't provided matching photos yet:
 
 | Item | Where | Status |
 |------|-------|--------|
-| Final logo (SVG + transparent PNG) | `public/logo.svg`, `public/logo.png` | Placeholder wordmark at `public/logo-placeholder.svg` |
-| Owner headshot | `src/lib/images.ts` → `PHOTOS.aboutOwners` | **Stand-in Unsplash photo** — replace with real Krista &amp; Benjamin headshot |
-| Home hero photo | `src/lib/images.ts` → `PHOTOS.homeHero` | **Stand-in** — replace with a real Lake-Wawasee detail shot |
-| Service category heroes (×6) | `src/lib/images.ts` → `PHOTOS.servicesAuto`, `servicesBoat`, `servicesRv`, `servicesMotorcycle`, `servicesCeramic`, `servicesPaintCorrection` | **Stand-ins** — replace per category |
-| Gallery photos (×12) | `src/lib/images.ts` → `GALLERY_PHOTOS` | **Stand-ins** — replace with real before/after shots |
-| Membership backdrop | `src/lib/images.ts` → `PHOTOS.membershipBackdrop` | **Stand-in** pontoon-on-lake placeholder |
+| Motorcycle service hero | `src/lib/images.ts` → `PHOTOS.servicesMotorcycle` | **Unsplash stand-in** — owner has no motorcycle detail photos on file yet |
+| About-page owner photo | `src/lib/images.ts` → `PHOTOS.aboutOwners` | **Unsplash silhouette stand-in** — needs real Krista &amp; Benjamin headshot |
+
+Other minor items:
+
+| Item | Where | Status |
+|------|-------|--------|
+| Logo formats | `public/photos/logo.jpg` | Real JPG in use; SVG/PNG variants would be ideal for retina + dark mode |
 | Chamber logo files | `public/chambers/*.png` | Text links only — optional |
 | Insurance carrier / policy info for footer | not yet wired | Optional, for trust display |
 | Favicon + apple-icon set | `src/app/icon.png`, `src/app/apple-icon.png` | Next.js default in use — replace with branded |
 
-### How to replace the stand-in photos
+### How to replace any remaining stand-in
 
-1. Krista downloads her best before/after photos (she has many on the Facebook page — Meta doesn't let me fetch them automatically).
-2. Upload to Supabase Storage's `gallery/` bucket (public).
-3. Copy the public URL into `src/lib/images.ts` — replace each `u("...")` call with the new Supabase URL string.
+1. Drop a new JPG into `public/photos/` with a kebab-case name (e.g., `motorcycle.jpg`, `owners-headshot.jpg`).
+2. Open `src/lib/images.ts`, find the relevant key (e.g. `servicesMotorcycle`, `aboutOwners`).
+3. Replace the `u("...")` Unsplash call with `local("your-new-file.jpg")`.
 4. Commit + push. Vercel rebuilds; real photos go live.
 
 ## 4 · Service catalog confirmation (Phase 2 seed)

@@ -1,50 +1,35 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BUSINESS } from "@/lib/constants";
 
 type Props = {
   className?: string;
   href?: string;
+  /** Optional override for the rendered logo height (Tailwind class). */
+  heightClass?: string;
 };
 
-export function Logo({ className, href = "/" }: Props) {
+export function Logo({
+  className,
+  href = "/",
+  heightClass = "h-9 sm:h-10",
+}: Props) {
   return (
     <Link
       href={href}
       aria-label={`${BUSINESS.shortName} home`}
       className={className}
     >
-      <svg
-        viewBox="0 0 200 48"
-        role="img"
-        aria-label={BUSINESS.shortName}
-        className="h-9 w-auto"
-      >
-        <text
-          x="0"
-          y="36"
-          fontFamily="var(--font-inter), system-ui, sans-serif"
-          fontWeight="900"
-          fontSize="36"
-          fill="currentColor"
-          letterSpacing="-0.04em"
-          className="text-primary"
-        >
-          KNB
-        </text>
-        <circle cx="80" cy="12" r="3.5" className="fill-[color:var(--color-brand-teal,#1F8FA8)]" />
-        <text
-          x="90"
-          y="34"
-          fontFamily="var(--font-inter), system-ui, sans-serif"
-          fontWeight="500"
-          fontSize="14"
-          fill="currentColor"
-          letterSpacing="0.12em"
-          className="text-foreground"
-        >
-          DETAILING
-        </text>
-      </svg>
+      {/* Real KNB Detailing logo — cyan "KNB" + black "Detailing" wordmark
+          with car silhouette. Sourced from the owner's brand assets. */}
+      <Image
+        src="/photos/logo.jpg"
+        alt={`${BUSINESS.shortName} — ${BUSINESS.tagline}`}
+        width={200}
+        height={92}
+        priority
+        className={`w-auto ${heightClass}`}
+      />
     </Link>
   );
 }

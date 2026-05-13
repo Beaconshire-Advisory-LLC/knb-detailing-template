@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Heart, MapPin, ShieldCheck, Users } from "lucide-react";
+import { Heart, MapPin, ShieldCheck, Users, Award } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -120,7 +120,32 @@ export default function AboutPage() {
               </Button>
             </div>
           </div>
-          <div>
+          <div className="space-y-4">
+            <Card className="overflow-hidden border-brand-cyan/30 bg-gradient-to-br from-brand-graphite to-brand-wawasee text-white">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-3">
+                  <Image
+                    src={PHOTOS.awardBadge}
+                    alt="Best of BusinessRate 2025 plaque"
+                    width={80}
+                    height={106}
+                    className="rounded shadow-lg ring-1 ring-white/20"
+                  />
+                  <div>
+                    <div className="inline-flex items-center gap-1.5 rounded-full bg-brand-cyan/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-brand-cyan ring-1 ring-brand-cyan/30">
+                      <Award className="size-3" aria-hidden />
+                      2025
+                    </div>
+                    <h3 className="mt-1.5 text-sm font-bold leading-tight">
+                      Best of BusinessRate
+                    </h3>
+                    <p className="mt-1 text-xs text-white/85">
+                      Car Detailing Service · Kosciusko County · based on Google reviews through July 2025
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
             <Card>
               <CardContent className="p-6">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">

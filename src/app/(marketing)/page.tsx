@@ -25,6 +25,7 @@ import { ReviewsCarousel } from "@/components/marketing/reviews-carousel";
 import { BeforeAfterCard } from "@/components/marketing/before-after";
 import { PhotoBackdrop } from "@/components/marketing/photo-backdrop";
 import { WaveDivider } from "@/components/marketing/wave-divider";
+import { AwardCallout } from "@/components/marketing/award-callout";
 import { BUSINESS, SERVICE_AREA } from "@/lib/constants";
 import { PHOTOS, GALLERY_PHOTOS } from "@/lib/images";
 import {
@@ -151,6 +152,9 @@ export default function HomePage() {
           className="absolute -bottom-px left-0 right-0 h-12 w-full"
         />
       </PhotoBackdrop>
+
+      {/* 1.5 · Award */}
+      <AwardCallout />
 
       {/* 2 · We come to you */}
       <section
