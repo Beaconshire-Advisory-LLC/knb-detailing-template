@@ -124,12 +124,12 @@ I've pushed a complete copy of your website code to a public GitHub repository. 
 
 1. **Find the link in my email** labeled "Setup walkthrough" or "GitHub repository." It will look like:
 
-   `https://github.com/beaconshire-advisory/knb-detailing-template`
+   `https://github.com/Beaconshire-Advisory-LLC/knb-detailing-template`
 
 2. **Click that link.** Your browser opens the GitHub page for the project.
 
 3. **What you'll see**:
-   - The repository name at the top: `beaconshire-advisory/knb-detailing-template`
+   - The repository name at the top: `Beaconshire-Advisory-LLC/knb-detailing-template`
    - A list of folders and files (named things like `src`, `public`, `handoff`)
    - A **README** displayed below the file list, with a big "Are you Krista or Benjamin?" callout
    - A green **Code** button on the upper-right of the file list
@@ -169,7 +169,7 @@ Don't click anything yet. We'll click **Fork** in Part 4.
 
     `https://github.com/YOUR-USERNAME/knb-detailing` (or `knb-detailing-template`)
 
-    Notice that the top of the page now shows **your username** as the owner, with a tiny "forked from beaconshire-advisory/knb-detailing-template" note in grey. **That's yours.**
+    Notice that the top of the page now shows **your username** as the owner, with a tiny "forked from Beaconshire-Advisory-LLC/knb-detailing-template" note in grey. **That's yours.**
 
 11. **Bookmark this page.** You'll come back to it in Part 6.
 

@@ -122,7 +122,7 @@ Each new client requires swapping these files. Keep a checklist per engagement.
 
 ```bash
 # Clone the template
-gh repo clone beaconshire-advisory/local-business-template <client-slug>
+gh repo clone Beaconshire-Advisory-LLC/local-business-template <client-slug>
 cd <client-slug>
 
 # Customize
@@ -212,7 +212,7 @@ Pattern: local service business, mobile or location-based, customers book by app
 
 ### Push and deploy (15 min, your side)
 
-- [ ] `gh repo create beaconshire-advisory/<client-slug>-template --public --source=. --remote=origin --push`
+- [ ] `gh repo create Beaconshire-Advisory-LLC/<client-slug>-template --public --source=. --remote=origin --push`
 - [ ] `pnpm dlx vercel --prod` — get a `*.vercel.app` preview URL
 - [ ] Open the preview URL yourself and click through. Look for anything obviously wrong (typos, broken images, wrong copy).
 

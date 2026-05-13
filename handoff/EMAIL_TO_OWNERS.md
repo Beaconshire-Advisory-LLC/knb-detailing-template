@@ -68,14 +68,14 @@ Order of operations on James's side, ~30 minutes:
 
 1. **Push the code to a public GitHub repo.** From `/Users/jrf/Desktop/knb-detailing/`:
    ```bash
-   gh repo create beaconshire-advisory/knb-detailing-template \
+   gh repo create Beaconshire-Advisory-LLC/knb-detailing-template \
      --public \
      --source=. \
      --remote=origin \
      --push \
      --description "KNB Detailing website — turnkey package from Beaconshire Advisory"
    ```
-   (Replace `beaconshire-advisory` with whatever GitHub username/org you use.)
+   (Replace `Beaconshire-Advisory-LLC` with whatever GitHub username/org you use.)
 
 2. **Deploy a preview to your own Vercel** so they can click and see the site immediately:
    ```bash
@@ -88,11 +88,11 @@ Order of operations on James's side, ~30 minutes:
 
 3. **Fill in the placeholders** in the email above:
    - `[PREVIEW_URL_FROM_VERCEL]` → the URL from step 2.
-   - `[SETUP_WALKTHROUGH_URL]` → `https://github.com/beaconshire-advisory/knb-detailing-template/blob/main/handoff/02-setup-walkthrough.md`
-   - `[WELCOME_URL]` → `https://github.com/beaconshire-advisory/knb-detailing-template/blob/main/handoff/01-welcome.md`
-   - `[AFTER_LAUNCH_URL]` → `https://github.com/beaconshire-advisory/knb-detailing-template/blob/main/handoff/03-after-launch.md`
-   - `[TROUBLESHOOTING_URL]` → `https://github.com/beaconshire-advisory/knb-detailing-template/blob/main/handoff/04-troubleshooting.md`
-   - `[OWNER_GUIDE_URL]` → `https://github.com/beaconshire-advisory/knb-detailing-template/blob/main/OWNER_GUIDE.md`
+   - `[SETUP_WALKTHROUGH_URL]` → `https://github.com/Beaconshire-Advisory-LLC/knb-detailing-template/blob/main/handoff/02-setup-walkthrough.md`
+   - `[WELCOME_URL]` → `https://github.com/Beaconshire-Advisory-LLC/knb-detailing-template/blob/main/handoff/01-welcome.md`
+   - `[AFTER_LAUNCH_URL]` → `https://github.com/Beaconshire-Advisory-LLC/knb-detailing-template/blob/main/handoff/03-after-launch.md`
+   - `[TROUBLESHOOTING_URL]` → `https://github.com/Beaconshire-Advisory-LLC/knb-detailing-template/blob/main/handoff/04-troubleshooting.md`
+   - `[OWNER_GUIDE_URL]` → `https://github.com/Beaconshire-Advisory-LLC/knb-detailing-template/blob/main/OWNER_GUIDE.md`
 
 4. **Send the email.** Plain text or formatted HTML — both work. Send from your business email so it lands cleanly (not in spam).
 

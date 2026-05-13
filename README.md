@@ -12,7 +12,7 @@ Production website + customer portal for **KNB Detailing LLC** (Syracuse, IN).
 
 Welcome. This is your website. **Click the button below to deploy it into accounts you own.**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbeaconshire-advisory%2Fknb-detailing-template&project-name=knb-detailing&repository-name=knb-detailing&env=NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY,STRIPE_SECRET_KEY,NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,RESEND_API_KEY,RESEND_FROM_EMAIL,OWNER_NOTIFICATION_EMAIL,TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,TWILIO_PHONE_NUMBER,CRON_SECRET&envDescription=All%20values%20live%20in%20the%20notes%20doc%20you%20created%20in%20Part%201%20of%20the%20Setup%20Walkthrough)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FBeaconshire-Advisory-LLC%2Fknb-detailing-template&project-name=knb-detailing&repository-name=knb-detailing&env=NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY,STRIPE_SECRET_KEY,NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,RESEND_API_KEY,RESEND_FROM_EMAIL,OWNER_NOTIFICATION_EMAIL,TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,TWILIO_PHONE_NUMBER,CRON_SECRET&envDescription=All%20values%20live%20in%20the%20notes%20doc%20you%20created%20in%20Part%201%20of%20the%20Setup%20Walkthrough)
 
 **Read this in order — about 2 hours of clicking, plus 1–3 days waiting on Stripe and the SMS carrier:**
 

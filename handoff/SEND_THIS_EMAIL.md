@@ -9,7 +9,7 @@
 From `/Users/jrf/Desktop/knb-detailing/`:
 
 ```bash
-gh repo create beaconshire-advisory/knb-detailing-template \
+gh repo create Beaconshire-Advisory-LLC/knb-detailing-template \
   --public \
   --source=. \
   --remote=origin \
@@ -17,7 +17,7 @@ gh repo create beaconshire-advisory/knb-detailing-template \
   --description "KNB Detailing — turnkey website package · Beaconshire Advisory"
 ```
 
-Replace `beaconshire-advisory` with the GitHub username or organization you want this under. (If you don't have a `beaconshire-advisory` org yet, you can create one in GitHub for $0 — or just use your personal account.)
+Replace `Beaconshire-Advisory-LLC` with the GitHub username or organization you want this under. (If you don't have a `Beaconshire-Advisory-LLC` org yet, you can create one in GitHub for $0 — or just use your personal account.)
 
 Verify: open `https://github.com/[your-username]/knb-detailing-template`. The repo exists; the Deploy to Vercel button in the README is now functional.
 
@@ -89,9 +89,9 @@ The 30-minute delivery loop is the whole business model.
 
 ## Optional — make the template fully generic
 
-If you want the public template at `github.com/beaconshire-advisory/local-business-template` to be reusable across industries (not KNB-specific), do this once:
+If you want the public template at `github.com/Beaconshire-Advisory-LLC/local-business-template` to be reusable across industries (not KNB-specific), do this once:
 
-1. `gh repo fork beaconshire-advisory/knb-detailing-template --clone=true --remote=true`
+1. `gh repo fork Beaconshire-Advisory-LLC/knb-detailing-template --clone=true --remote=true`
 2. Strip out KNB-specific content:
    - `src/lib/constants.ts` → replace BUSINESS object with `{{TEMPLATE}}` placeholders
    - `src/lib/images.ts` → blank PHOTOS object pointing at placeholder paths
@@ -99,7 +99,7 @@ If you want the public template at `github.com/beaconshire-advisory/local-busine
    - `src/content/blog/*.mdx` → delete (or replace with generic posts)
    - `public/photos/*.jpg` → replace with a single placeholder
    - `supabase/seed.sql` → comment out KNB-specific seed rows
-3. Push to `beaconshire-advisory/local-business-template`.
+3. Push to `Beaconshire-Advisory-LLC/local-business-template`.
 
 Then each new engagement starts from there, not from KNB's customized version. Cleaner.
 

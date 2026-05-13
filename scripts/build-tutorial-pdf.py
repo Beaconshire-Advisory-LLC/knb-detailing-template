@@ -464,7 +464,7 @@ def part_3_find_repo():
         p("Steps", "h2"),
         *numbered([
             "<b>Find the link in my email</b> labeled \"Setup walkthrough\" or \"GitHub repository.\" It will "
-            "look like: <font face='Courier'>https://github.com/beaconshire-advisory/knb-detailing-template</font>",
+            "look like: <font face='Courier'>https://github.com/Beaconshire-Advisory-LLC/knb-detailing-template</font>",
             "<b>Click that link.</b> Your browser opens the GitHub page for the project.",
             "<b>Look around.</b> You'll see the repository name at the top, a list of folders and files "
             "(named things like <font face='Courier'>src</font>, <font face='Courier'>public</font>, "
@@ -511,7 +511,7 @@ def part_4_fork():
             "<b>Confirmation:</b> you land on a page that looks identical to the previous one, but the URL bar now "
             "shows <font face='Courier'>https://github.com/YOUR-USERNAME/knb-detailing</font> (or "
             "<font face='Courier'>knb-detailing-template</font>). The top of the page shows <b>your username</b> as the owner, "
-            "with a small \"forked from beaconshire-advisory/knb-detailing-template\" note in grey. <b>That's yours.</b>",
+            "with a small \"forked from Beaconshire-Advisory-LLC/knb-detailing-template\" note in grey. <b>That's yours.</b>",
             "<b>Bookmark this page.</b> You'll come back to it in Part 6.",
         ]),
         p("What you've accomplished", "h2"),

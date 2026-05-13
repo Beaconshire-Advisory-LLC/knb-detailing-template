@@ -166,10 +166,10 @@ This is the magic part. One click clones the entire site into your accounts and 
 3. Now find the **Setup Walkthrough URL** in the email and open this doc (you're reading it).
 4. Click this button:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbeaconshire-advisory%2Fknb-detailing-template&project-name=knb-detailing&repository-name=knb-detailing&env=NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY,STRIPE_SECRET_KEY,NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,RESEND_API_KEY,RESEND_FROM_EMAIL,OWNER_NOTIFICATION_EMAIL,TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,TWILIO_PHONE_NUMBER,CRON_SECRET&envDescription=Find%20each%20value%20in%20your%20notes%20doc%20from%20Part%201)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FBeaconshire-Advisory-LLC%2Fknb-detailing-template&project-name=knb-detailing&repository-name=knb-detailing&env=NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY,STRIPE_SECRET_KEY,NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,RESEND_API_KEY,RESEND_FROM_EMAIL,OWNER_NOTIFICATION_EMAIL,TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,TWILIO_PHONE_NUMBER,CRON_SECRET&envDescription=Find%20each%20value%20in%20your%20notes%20doc%20from%20Part%201)
 
 > If the button link doesn't render in your viewer, the equivalent URL is:
-> `https://vercel.com/new/clone?repository-url=https://github.com/beaconshire-advisory/knb-detailing-template`
+> `https://vercel.com/new/clone?repository-url=https://github.com/Beaconshire-Advisory-LLC/knb-detailing-template`
 
 ### 2.2 · Vercel walks you through it
 
