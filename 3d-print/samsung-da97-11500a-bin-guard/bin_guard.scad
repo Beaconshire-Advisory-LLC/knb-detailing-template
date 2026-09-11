@@ -9,9 +9,11 @@
 //
 //  Render one part at a time:
 //     openscad -o stl/bin_guard_full.stl        -D 'part="full"'   bin_guard.scad
-//     openscad -o stl/bin_guard_split_left.stl  -D 'part="left"'   bin_guard.scad
-//     openscad -o stl/bin_guard_split_middle.stl -D 'part="middle"' bin_guard.scad
-//     openscad -o stl/bin_guard_split_right.stl -D 'part="right"'  bin_guard.scad
+//     openscad -o stl/bin_guard_2pc_left.stl    -D 'part="left"'  -D segments=2 bin_guard.scad
+//     openscad -o stl/bin_guard_2pc_right.stl   -D 'part="right"' -D segments=2 bin_guard.scad
+//     openscad -o stl/bin_guard_3pc_left.stl    -D 'part="left"'  -D segments=3 bin_guard.scad
+//     openscad -o stl/bin_guard_3pc_middle.stl  -D 'part="middle"' -D segments=3 bin_guard.scad
+//     openscad -o stl/bin_guard_3pc_right.stl   -D 'part="right"' -D segments=3 bin_guard.scad
 //     openscad -o stl/tab_test_coupon.stl       -D 'part="coupon"' bin_guard.scad
 //  Override any dimension the same way, e.g.  -D width=520 -D tongue_len=30
 // ===========================================================================
@@ -21,31 +23,36 @@ part = "full";        // [full, left, middle, right, coupon]
 // ---- Main body -----------------------------------------------------------
 //  "measured" = scaled from the tape-measure photos (about +/- 3 mm)
 //  "ASSUMED"  = not determinable from the photos - measure before printing
-width       = 528;    // measured  rail outer width            (~20-13/16 in)
-leg         = 140;    // measured  leg length, rail outer face to leg end (~5-1/2 in)
+width       = 419;    // measured  rail outer width            (~16-1/2 in; front-view photo)
+leg         = 110;    // measured  leg length, rail outer face to leg end (~4-3/8 in)
 height      = 70;     // measured  wall height                 (~2-3/4 in)
 wall        = 2.4;    // assumed   wall thickness (orig ~2 mm; 2.4 = 6 x 0.4 mm lines)
-corner      = 20;     // measured  outer plan-view radius of the two front corners
+corner      = 15;     // measured  outer plan-view radius of the two front corners
 
 // ---- Top rim (outward flange) -------------------------------------------
-lip         = 10;     // measured  rim width past the outer wall face
+lip         = 8;      // measured  rim width past the outer wall face
 lip_thk     = 2.4;    // assumed   rim thickness
 
 // ---- Snap tabs hanging below the front rail ------------------------------
-tab_w       = 45;     // measured  tab width
-tab_h       = 18;     // measured  how far the tab hangs below the wall bottom
-tab_spacing = 130;    // measured  centre-to-centre distance between the two tabs
+tab_w       = 35;     // measured  tab width
+tab_h       = 14;     // measured  how far the tab hangs below the wall bottom
+tab_spacing = 110;    // measured  centre-to-centre distance between the two tabs
 tab_nub     = 1.5;    // assumed   snap ridge depth on the tab's inner (door-side) face
 tab_nub_h   = 3;      // assumed   snap ridge height
 
-// ---- Tongues at the rear end of each leg (into the door-liner slots) ------
-tongue_len  = 25;     // ASSUMED   length past the leg end  - measure the liner slot depth
-tongue_h    = 20;     // ASSUMED   tongue height            - measure the liner slot height
-tongue_z    = 5;      // ASSUMED   tongue bottom above the wall bottom
-tongue_thk  = 2.4;    // assumed   tongue thickness         - measure the liner slot width
+// ---- Hook tongues at the top-rear corner of each leg (hang on the liner) --
+//  The photos show the break at the TOP rear corner of each leg, so the tongue
+//  is modeled as an extension of the leg wall at rim height, with an optional
+//  downward hook at its end to catch a ledge on the door liner.
+tongue_len  = 20;     // ASSUMED   length past the leg end  - measure the liner ledge / slot
+tongue_h    = 18;     // ASSUMED   tongue height
+tongue_z    = height - 18; // ASSUMED  tongue bottom edge (default: flush with the top)
+hook_drop   = 0;      // ASSUMED   downward hook at the tongue tip, 0 = plain tongue
+hook_thk    = 2.4;    // assumed   hook thickness (along Y)
+tongue_thk  = 2.4;    // assumed   tongue thickness
 
 // ---- Splitting for small print beds (left / middle / right) ---------------
-segments      = 3;    // number of segments the "left/middle/right" parts assume
+segments      = 2;    // 2 = halves (~220 mm, fits 250 mm beds); 3 = thirds (~150 mm, fits 220 mm beds)
 dovetail_len  = 10;   // dovetail length along X
 dovetail_neck = 28;   // dovetail height at the joint face
 dovetail_tip  = 38;   // dovetail height at the tip
@@ -113,10 +120,14 @@ module guard(w = width, l = leg, r = corner, spacing = tab_spacing) {
                     translate([0, t - eps, 0]) cube([tab_w, tab_nub + eps, tab_nub_h]);
             }
 
-        // tongues at the rear end of each leg (co-planar with the leg wall)
+        // hook tongues at the rear end of each leg (co-planar with the leg wall)
         for (sx = [-1, 1])
-            translate([sx * (w/2 - t/2) - tongue_thk/2, l - eps, tongue_z])
+            translate([sx * (w/2 - t/2) - tongue_thk/2, l - eps, tongue_z]) {
                 cube([tongue_thk, tongue_len + eps, tongue_h]);
+                if (hook_drop > 0)
+                    translate([0, tongue_len + eps - hook_thk, -hook_drop])
+                        cube([tongue_thk, hook_thk, hook_drop + eps]);
+            }
     }
 }
 
@@ -159,7 +170,7 @@ module segment(i) {           // i = 0 .. segments-1
 // ---------------------------------------------------------------------------
 if (part == "full")   guard();
 if (part == "left")   segment(0);
-if (part == "middle") segment(1);
+if (part == "middle") segment(1);          // only meaningful with segments = 3
 if (part == "right")  segment(segments - 1);
 // 60 mm of rail with ONE centred tab + 40 mm legs with tongues: print this first
 if (part == "coupon") guard(w = 60 + 2*wall, l = 40, r = 0, spacing = 0);
